@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Captcha Solver</title>
+  <title>Captcha Solver Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 60px; }
+    #captcha-img { max-width: 300px; border: 2px solid #222; }
+    #captcha-result { margin-top: 20px; font-size: 1.1em; font-weight: bold; color: #007600; }
+  </style>
   <script>
-    async function solveCaptcha() {
+    function solveCaptcha() {
       const urlParams = new URLSearchParams(window.location.search);
-      const imgUrl = urlParams.get('url') || 'sample.png';
+      // Allows usage like: ?url=flags.png, defaults to local flags.png
+      const imgUrl = urlParams.get('url') || 'flags.png';
       document.getElementById('captcha-img').src = imgUrl;
+      document.getElementById('img-url').textContent = imgUrl;
 
       // Simulate solving (replace with real logic if needed)
       setTimeout(() => {
@@ -17,9 +24,12 @@
   </script>
 </head>
 <body>
-  <h1>Captcha Solver</h1>
-  <p>Image URL: <span id="captcha-url"></span></p>
-  <img id="captcha-img" src="" alt="Captcha Image" style="max-width:300px;">
-  <div id="captcha-result" style="margin-top:20px; font-weight:bold;"></div>
+  <h1>Captcha Solver Demo</h1>
+  <div>
+    <p>Image Source: <span id="img-url"></span></p>
+    <img id="captcha-img" src="flags.png" alt="Captcha Image" />
+  </div>
+  <div id="captcha-result"></div>
 </body>
 </html>
+
