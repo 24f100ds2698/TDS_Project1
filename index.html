@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TDS Project 1</title>
+  <title>Captcha Solver</title>
+  <script>
+    async function solveCaptcha() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const imgUrl = urlParams.get('url') || 'sample.png';
+      document.getElementById('captcha-img').src = imgUrl;
+
+      // Simulate solving (replace with real logic if needed)
+      setTimeout(() => {
+        document.getElementById('captcha-result').textContent = "Solved captcha: [sample text]";
+      }, 3000);
+    }
+    window.onload = solveCaptcha;
+  </script>
 </head>
 <body>
-  <h1>Welcome to TDS Project 1!</h1>
-  <p>This is a placeholder for your deployed app.</p>
+  <h1>Captcha Solver</h1>
+  <p>Image URL: <span id="captcha-url"></span></p>
+  <img id="captcha-img" src="" alt="Captcha Image" style="max-width:300px;">
+  <div id="captcha-result" style="margin-top:20px; font-weight:bold;"></div>
 </body>
 </html>
