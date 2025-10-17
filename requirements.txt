@@ -2,9 +2,6 @@ fastapi
 uvicorn
 requests
 pydantic
-# If using Flask instead of FastAPI, add:
-# flask
-# If you use OCR:
-pytesseract
-Pillow
+python-multipart
+
 
