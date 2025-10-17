@@ -1,5 +1,6 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from pydantic import BaseModel
+from typing import List, Any
 
 app = FastAPI()
 
@@ -10,13 +11,20 @@ class TaskRequest(BaseModel):
     round: int
     nonce: str
     brief: str
-    checks: list
+    checks: List[str]
     evaluation_url: str
-    attachments: list
+    attachments: List[Any]
 
 @app.post("/api-endpoint")
-async def receive_task(request: Request):
-    data = await request.json()
-    # TODO: Validate secret, process brief, generate repo, etc.
-    return {"status": "received", "message": "Task received and being processed."}
+def receive_task(payload: TaskRequest):
+    # Echo the received data
+    return {
+        "status": "ok",
+        "received": payload.dict()
+    }
+
+@app.get("/")
+def root():
+    return {"message": "FastAPI server is running!"}
+
 
